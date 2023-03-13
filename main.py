@@ -17,7 +17,7 @@ def main() -> None:
         YOUR_APPLICATION_CLIENT_ID,
         YOUR_APPLICATION_CLIENT_SECRET,
         YOUR_APPLICATION_REDIRECT_URI ,
-        client.VALID_SCOPES_LIST[3]
+        [client.VALID_SCOPES_LIST[3], client.VALID_SCOPES_LIST[1]]
     )
 
     print(f"Next in Queue: {spotify_client.get_next_in_queue}")
