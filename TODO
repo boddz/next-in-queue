@@ -1,0 +1,16 @@
+Next in Queue
+--------------------------------
+
+Queue is done, next in queue `src.client.Client.get_next_in_queue` is a fully
+reliable 'hack' for getting the next in queue, works with shuffle.
+
+
+Next in Playlist (hackjob)
+--------------------------
+
+Implement the next in playlist, refer to `old/main.py`.
+
+Playlist > 100 Tracks:
+
+Use ceiling div to get the needed number or requests and append offset to get
+the correct playlist track names for playlists bigger than 100.
