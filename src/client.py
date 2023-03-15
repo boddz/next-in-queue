@@ -15,6 +15,8 @@ from __future__ import annotations
 
 import traceback
 from sys import version_info
+from random import randint
+from time import sleep
 
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
@@ -141,6 +143,56 @@ class Client:
         except:
             traceback.print_exc()
             return "\nNothing is next, no current queue perhaps."
+
+    @property
+    def _recommended_genre_seeds_list(self) -> list:
+        return self.spotify_obj.recommendation_genre_seeds()["genres"]
+
+    def _get_recommended_track_ids(self, track_id: str) -> list:
+        rs = self.spotify_obj.recommendations(seed_tracks=track_id, limit=100)
+        return [i["id"] for i in rs["tracks"]]
+
+    @staticmethod
+    def _pick_random_track_id_from_list(track_ids: list) -> str:
+        """
+        Grab a track ID in the specified track ID's list. 1 - 100 range.
+
+        I will not bother with exception handle here as it is kind of rare you
+        would need this.
+        """
+        return track_ids[randint(0, 100)]
+
+    def add_list_of_track_ids_to_playlist(self, playlist_id: str,
+                                           track_ids: list,
+                                           repeat: int=None,
+                                           sleep_interval: int=5) -> None:
+        """
+        Add 100 tracks to a specified playlist either 1x or *x. This shouldn't
+        add that many duplicate tracks, but it is up to what Spotify
+        recommends, I tried to add some randomness to help with this and
+        to spice up the track a tad bit more.
+
+        Requires 1 - 5 track IDs to be entered in list form for this to work.
+
+        I would leave `sleep_interval` as 5 as this will not spam the Spotify
+        API then and risk you getting rate limited.
+        """
+        _user = self.spotify_obj.me()
+        _initial_ids = self._get_recommended_track_ids(track_ids)
+        if repeat is None:
+            self.spotify_obj.user_playlist_add_tracks(_user, playlist_id,
+                                                      _initial_ids)
+        else:
+            assert type(repeat) == int and not None, "Please use an int here."
+            for i in range(repeat):
+                print(f"Sweep: {i + 1} >> tracks added: {(i + 1) * 100}")
+                if i == 0: _ids = self._get_recommended_track_ids(track_ids)
+                else: _ids = self._get_recommended_track_ids(
+                    [self._pick_random_track_id_from_list(_initial_ids)]
+                )
+                self.spotify_obj.user_playlist_add_tracks(_user, playlist_id,
+                                                          _ids)
+                sleep(sleep_interval)
 
 
 if __name__ == "__main__":
