@@ -36,6 +36,10 @@ python3 -m pip install -r requirements.txt
 
 ## Use
 
+Next in Queue & Crawl Recommeded Tracks
+
+### Next in Queue
+
 First, and this is very important to actually be granted access to Spotify's
 API; create an application at the
 [Spotify dev dashboard](https://developer.spotify.com/dashboard/applications)
@@ -54,6 +58,15 @@ Once that is done simply do the following:
 ```bash
 python3 main.py  # Once all prerequisites are met.
 ```
+
+### Crawl Recommended Tracks
+
+There is a sub-script in this project called `crawl.py`. It will take an
+initial track ID and the user's playlist ID on their account that they want
+to append tracks to and add tracks two it randomized, suggested by Spotify
+that are similar to the original track (track ID).
+
+Just update your details like the next in track script and run it the same.
 
 
 ## Closing Note
