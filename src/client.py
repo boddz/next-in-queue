@@ -5,7 +5,7 @@ A local module to help assist with getting the next Spotify track in a user's
 currently playing queue. Contains class and helper methods/ properties for
 doing so.
 
-To be released under 'The Unlicense'.
+To be released under an MIT license.
 
 Please refer to the project source tree for more information on this.
 """
