@@ -9,8 +9,8 @@ from src import client
 
 def main() -> None:
     # NOTE: where redacted, add your own information: client ID + secret.
-    YOUR_APPLICATION_CLIENT_ID = "7c52a9fd85404c058db90d0758d64c18"
-    YOUR_APPLICATION_CLIENT_SECRET = "27b7c9c53a6d4f489cf47b9606b8a89e"
+    YOUR_APPLICATION_CLIENT_ID = "REDACTED"
+    YOUR_APPLICATION_CLIENT_SECRET = "REDACTED"
     YOUR_APPLICATION_REDIRECT_URI = "http://127.0.0.1:9090"
 
     spotify_client = client.Client(
