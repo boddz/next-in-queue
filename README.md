@@ -4,7 +4,7 @@ A script/ local module to get the song that is next in a user's current queue.
 
 Created for a friend to use for a twitch bot or something.
 
-To be released under 'The Unlicense', use this however you want, I mainly did
+To be released under an MIT license, use this however you want, I mainly did
 this for a bit of fun.
 
 
