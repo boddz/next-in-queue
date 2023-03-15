@@ -64,7 +64,7 @@ python3 main.py  # Once all prerequisites are met.
 
 There is a sub-script in this project called `crawl.py`. It will take an
 initial track ID and the user's playlist ID on their account that they want
-to append tracks to and add tracks two it randomized, suggested by Spotify
+to append tracks to and add tracks to it randomized, suggested by Spotify
 that are similar to the original track (track ID).
 
 Just update your details like the next in track script and run it the same.
