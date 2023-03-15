@@ -20,6 +20,7 @@ contamination, although this is optional:
 python3 -m venv venv && source venv/bin/activate
 
 # Windows 10 w/ powershell:
+python3 -m venv venv
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 ./venv/Scripts/activate.ps1
 ```
